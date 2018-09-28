@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!-- 顶部信息 -->
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="fill_parent"
@@ -51,6 +52,106 @@
             android:src="@drawable/base_action_bar_action_city"
             android:layout_toLeftOf="@id/title_share_btn"/>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/title"
+        android:background="@drawable/biz_plugin_weather_shenzhen_bg"
+        android:orientation="vertical">
+
+        <!-- 今日天气信息 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/weather_today"
+            android:padding="10.0dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temperature_now"
+                android:text="当前温度：25℃"
+                android:textSize="30sp"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="20dp"
+                android:textColor="#ffffff"/>
+            <!-- 发布时间和湿度 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/temperature_now"
+                android:paddingTop="10dp"
+                android:id="@+id/time_moist">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/publish_time"
+                        android:layout_weight="1"
+                        android:text="今天17:17发布"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:gravity="right"
+                        android:paddingRight="5dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/moist_now"
+                        android:layout_weight="1"
+                        android:text="当前湿度:19%"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:layout_gravity="left"
+                        android:paddingLeft="5dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 今日温度+pm2.5 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/temperature_today_pm2.5"
+                android:orientation="horizontal"
+                android:layout_below="@id/time_moist">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="今日温度：11℃～25℃"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        android:paddingRight="10dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="天气：阴"
+                        android:textColor="#ffffff"/>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/biz_plugin_weather_qing"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
 
 
 
