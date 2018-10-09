@@ -170,7 +170,7 @@
                         android:text="空气污染"
                         android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:layout_gravity="right"/>
+                        android:layout_gravity="right" />
                 </LinearLayout>
                 <ImageView
                     android:layout_width="60dp"
@@ -180,6 +180,23 @@
                     android:paddingRight="90dp"
                     android:src="@drawable/biz_plugin_weather_0_50"/>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pm2.5">
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="response text"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:id="@+id/response_text"/>
+                </ScrollView>
             </LinearLayout>
 
         </RelativeLayout>
