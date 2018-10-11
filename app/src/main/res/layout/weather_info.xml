@@ -99,7 +99,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/publish_time"
+                        android:id="@+id/moist"
                         android:layout_weight="1"
                         android:text="湿度:19%"
                         android:layout_gravity="center"
@@ -108,7 +108,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/moist_now"
+                        android:id="@+id/publish_time"
                         android:layout_weight="1"
                         android:text="发布时间：17:17"
                         android:layout_gravity="center"
@@ -122,20 +122,21 @@
                     android:layout_weight="1.2"
                     android:layout_height="wrap_content"
                     android:id="@+id/temperature_today_weather"
-                    android:orientation="vertical"
-                    android:layout_below="@id/time_moist">
+                    android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="今日温度：11℃～25℃"
                         android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:paddingRight="10dp"/>
+                        android:paddingRight="10dp"
+                        android:id="@+id/temp_low_high"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:text="天气：阴"
+                        android:id="@+id/climate"
                         android:layout_gravity="center"
                         android:textColor="@color/white"
                         android:textSize="18sp"/>
@@ -149,7 +150,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:id="@+id/pm2.5"
+                android:id="@+id/pm2.5_pollution"
                 android:paddingTop="10dp"
                 android:layout_below="@id/moist_time_temperaturetoday_weather">
                 <LinearLayout
@@ -160,43 +161,57 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/pm2.5"
                         android:text="PM2.5:119"
                         android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:layout_gravity="right"/>
+                        android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="空气污染"
                         android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:layout_gravity="right" />
+                        android:layout_gravity="center"
+                        android:id="@+id/pollution"/>
                 </LinearLayout>
+
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:layout_gravity="left"
-                    android:paddingRight="90dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/pm2.5_img"
                     android:src="@drawable/biz_plugin_weather_0_50"/>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/pm2.5">
-                <ScrollView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="response text"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:text="今天"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/date"
+                        android:text="10月11日星期四"
                         android:textSize="18sp"
                         android:textColor="@color/white"
-                        android:id="@+id/response_text"/>
-                </ScrollView>
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+
+
             </LinearLayout>
 
         </RelativeLayout>
