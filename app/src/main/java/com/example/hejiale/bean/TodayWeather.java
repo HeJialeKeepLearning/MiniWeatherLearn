@@ -1,5 +1,7 @@
 package com.example.hejiale.bean;
 
+import android.media.Image;
+
 public class TodayWeather {
     private String city;
     private String updatetime;
