@@ -210,7 +210,22 @@
 
                 </LinearLayout>
 
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/suggestion_block"
+                android:layout_below="@id/pm2.5_pollution"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/suggestion"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:text="suggest:"/>
 
             </LinearLayout>
 

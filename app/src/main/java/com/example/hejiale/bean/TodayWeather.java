@@ -15,6 +15,15 @@ public class TodayWeather {
     private String high;
     private String low;
     private String weather;
+    private String suggest;
+
+    public String getSuggest() {
+        return suggest;
+    }
+
+    public void setSuggest(String suggest) {
+        this.suggest = suggest;
+    }
 
     public String getCity() {
         return city;

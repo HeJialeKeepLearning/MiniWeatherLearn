@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private ImageView updateBtn;
 
-    private TextView timeTv,moistTv,weekTv,pmDataTv,pmQualityTv,tempTv,climateTv,cityNameTv,templowtohighTv;
+    private TextView timeTv,moistTv,weekTv,pmDataTv,pmQualityTv,tempTv,climateTv,cityNameTv,templowtohighTv,suggestTv;
     private ImageView weatherImg,pmImg;
 
     private Handler mHandler = new Handler(){
@@ -199,6 +199,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                                 Log.d("myWeather","pm2.5:"+xmlPullParser.getText());
                             }else if (xmlPullParser.getName().equals("suggest")){
                                 eventType=xmlPullParser.next();
+                                todayWeather.setSuggest(xmlPullParser.getText());
                                 Log.d("my","suggestion:"+xmlPullParser.getText());
                             }else if (xmlPullParser.getName().equals("quality")){
                                 eventType=xmlPullParser.next();
@@ -253,6 +254,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         climateTv=(TextView) findViewById(R.id.climate);
         weatherImg=(ImageView) findViewById(R.id.weather_icon);
         templowtohighTv=(TextView) findViewById(R.id.temp_low_high);
+        suggestTv=(TextView) findViewById(R.id.suggestion);
 
         cityNameTv.setText("N/A");
         timeTv.setText("N/A");
@@ -265,6 +267,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         templowtohighTv.setText("N/A");
         pmImg.setImageDrawable(null);
         weatherImg.setImageDrawable(null);
+        suggestTv.setText("N/A");
 
     }
 
@@ -278,6 +281,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         tempTv.setText("当前温度:"+todayWeather.getTemperature()+"℃");
         climateTv.setText("天气："+todayWeather.getWeather());
         templowtohighTv.setText("今日温度："+todayWeather.getLow()+"~"+todayWeather.getHigh());
+        suggestTv.setText("出行建议："+todayWeather.getSuggest());
 
         switch (todayWeather.getWeather()){//更新天气图标
             case "暴雪":{
