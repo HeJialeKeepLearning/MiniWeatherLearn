@@ -26,6 +26,8 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -47,6 +49,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         }
     };
+
+    private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("MM月dd日");
+    private String dateString=simpleDateFormat.format(new Date());
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -275,7 +280,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         cityNameTv.setText(todayWeather.getCity()+"天气");
         timeTv.setText("发布时间："+todayWeather.getUpdatetime());
         moistTv.setText("湿度："+todayWeather.getMoist());
-        weekTv.setText(todayWeather.getDate());
+        weekTv.setText(dateString);
         pmQualityTv.setText("空气质量："+todayWeather.getQuality());
         pmDataTv.setText("pm2.5:"+todayWeather.getPm25());
         tempTv.setText("当前温度:"+todayWeather.getTemperature()+"℃");
