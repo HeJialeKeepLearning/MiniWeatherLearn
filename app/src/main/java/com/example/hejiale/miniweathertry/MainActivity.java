@@ -1,6 +1,7 @@
 package com.example.hejiale.miniweathertry;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,6 +39,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private TextView timeTv,moistTv,weekTv,pmDataTv,pmQualityTv,tempTv,climateTv,cityNameTv,templowtohighTv,suggestTv;
     private ImageView weatherImg,pmImg;
 
+    private ImageView mCitySelet;
+
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
@@ -61,6 +64,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         updateBtn=(ImageView) findViewById(R.id.title_update_btn);
         updateBtn.setOnClickListener(this);
 
+        mCitySelet=(ImageView) findViewById(R.id.title_city);
+        mCitySelet.setOnClickListener(this);
+
         if(NetUtil.getNetworkState(this)!=NetUtil.NETWORN_NONE){
             Log.d("myWeather","Net OK");
             Toast.makeText(MainActivity.this,"Net OK",Toast.LENGTH_SHORT).show();
@@ -75,6 +81,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view){
+
+        if(view.getId()==R.id.title_city){
+            Intent intent=new Intent(this,selectCity.class);
+            startActivity(intent);
+        }
 
         if(view.getId()==R.id.title_update_btn){//如果点击的是update_btn
 
