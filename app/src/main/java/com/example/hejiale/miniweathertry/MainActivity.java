@@ -3,6 +3,7 @@ package com.example.hejiale.miniweathertry;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +42,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private ImageView mCitySelet;
 
+    private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("MM月dd日");
+    private String dateString=simpleDateFormat.format(new Date());
+
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
@@ -52,9 +56,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         }
     };
-
-    private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("MM月dd日");
-    private String dateString=simpleDateFormat.format(new Date());
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,7 +85,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         if(view.getId()==R.id.title_city){
             Intent intent=new Intent(this,selectCity.class);
-            startActivity(intent);
+//            startActivity(intent);
+            startActivityForResult(intent,1);
         }
 
         if(view.getId()==R.id.title_update_btn){//如果点击的是update_btn
@@ -102,6 +104,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 Toast.makeText(MainActivity.this,"Net Down",Toast.LENGTH_LONG).show();
             }
 
+        }
+    }
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        if (requestCode==1 && resultCode==RESULT_OK){
+            String newCityCode=data.getStringExtra("cityCode");
+            Log.d("newCity",newCityCode);
+
+            if (NetUtil.getNetworkState(this)!=NetUtil.NETWORN_NONE){
+                Log.d("newCity","net ok");
+                queryWeatherInfo(newCityCode);
+            }
+            else {
+                Log.d("newCity","net down");
+                Toast.makeText(MainActivity.this,"net down!",Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -374,6 +392,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
             case "中雨":{
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhongyu);
+                break;
+            }
+            default:{
+                Log.d("err","null");
                 break;
             }
         }
