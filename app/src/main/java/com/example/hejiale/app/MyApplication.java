@@ -30,7 +30,7 @@ public class MyApplication extends Application{
         initCityList();
     }
 
-    private void initCityList(){
+    private void initCityList(){//建立mCityList，同时在线程里运行prepareCityList函数，不需要和主线程交互，因此没有Handler
         mCityList=new ArrayList<City>();
         new Thread(new Runnable() {
             @Override
@@ -40,7 +40,7 @@ public class MyApplication extends Application{
         }).start();
     }
 
-    private boolean prepareCityList(){
+    private boolean prepareCityList(){//在log里输出城市代码及名称，存入mCityList
         mCityList=mCityDB.getAllCity();
         int i=0;
         for (City city :mCityList){
@@ -70,7 +70,7 @@ public class MyApplication extends Application{
                 + CityDB.CITY_DB_NAME;
         File db=new File(path);
         Log.d(TAG,path);
-        if(!db.exists()){
+        if(!db.exists()){//如果city.db文件不存在
             String pathfoler="/data"
                     + Environment.getDataDirectory().getAbsolutePath()
                     + File.separator+getPackageName()
@@ -78,12 +78,12 @@ public class MyApplication extends Application{
                     + File.separator;
             File dirFirstFolder=new File(pathfoler);
             if (!dirFirstFolder.exists()){
-                dirFirstFolder.mkdirs();
+                dirFirstFolder.mkdirs();//创建此抽象路径指定的目录，包括所有必须但不存在的父目录
                 Log.d(TAG,"mkdirs");
             }
             Log.d(TAG,"db doesn't exit");
             try {
-                InputStream inputStream=getAssets().open("city.db");
+                InputStream inputStream=getAssets().open("city.db");//干嘛的？
                 FileOutputStream fileOutputStream=new FileOutputStream(db);
                 int len=-1;
                 byte[] buffer=new byte[1024];

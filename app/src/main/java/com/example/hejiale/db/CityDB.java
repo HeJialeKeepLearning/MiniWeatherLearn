@@ -19,7 +19,7 @@ public class CityDB {
     }
 
     public List<City> getAllCity(){
-        List<City> list=new ArrayList<City>();
+        List<City> list=new ArrayList<City>();//List<City>是一个存放任意个数个City变量的数组
         Cursor cursor=db.rawQuery("SELECT * from "+CITY_TABLE_NAME,null);
         while (cursor.moveToNext()){
             String province= cursor.getString(cursor.getColumnIndex("province"));

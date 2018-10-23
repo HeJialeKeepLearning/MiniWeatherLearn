@@ -37,13 +37,15 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private ImageView updateBtn;
 
-    private TextView timeTv,moistTv,weekTv,pmDataTv,pmQualityTv,tempTv,climateTv,cityNameTv,templowtohighTv,suggestTv;
+    private TextView timeTv,moistTv,weekTv,pmDataTv,pmQualityTv,tempTv,climateTv,cityNameTv,cityNameSecTv,templowtohighTv,suggestTv;
     private ImageView weatherImg,pmImg;
 
     private ImageView mCitySelet;
 
     private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("MM月dd日");
     private String dateString=simpleDateFormat.format(new Date());
+
+    private String currentCityName;//记录当前的城市名称
 
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg){
@@ -85,7 +87,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         if(view.getId()==R.id.title_city){
             Intent intent=new Intent(this,selectCity.class);
-//            startActivity(intent);
+            intent.putExtra("currentCityName",currentCityName);
+            Log.d("CityNamecur",intent.getStringExtra("currentCityName"));
             startActivityForResult(intent,1);
         }
 
@@ -307,6 +310,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     void updateTodayWeather(TodayWeather todayWeather){
         cityNameTv.setText(todayWeather.getCity()+"天气");
+        currentCityName=todayWeather.getCity();
         timeTv.setText("发布时间："+todayWeather.getUpdatetime());
         moistTv.setText("湿度："+todayWeather.getMoist());
         weekTv.setText(dateString);
