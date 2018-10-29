@@ -1,11 +1,14 @@
 package com.example.hejiale.app;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.example.hejiale.bean.City;
 import com.example.hejiale.db.CityDB;
+import com.example.hejiale.miniweathertry.selectCity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,7 +22,7 @@ public class MyApplication extends Application{
     private static final String TAG="myapp";
     private static MyApplication myApplication;
     private CityDB mCityDB;
-    private List<City> mCityList;
+    private static List<City> mCityList;
 
     @Override
     public void onCreate(){
@@ -40,7 +43,7 @@ public class MyApplication extends Application{
         }).start();
     }
 
-    private boolean prepareCityList(){//在log里输出城市代码及名称，存入mCityList
+    private boolean prepareCityList(){//用mCityList保存city.db中的项目，在log里输出城市代码及名称
         mCityList=mCityDB.getAllCity();
         int i=0;
         for (City city :mCityList){
@@ -53,7 +56,7 @@ public class MyApplication extends Application{
         return true;
     }
 
-    public List<City> getmCityList() {
+    public static List<City> getmCityList() {
         return mCityList;
     }
 
